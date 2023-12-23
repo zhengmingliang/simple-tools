@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.alianga</groupId>
+        <artifactId>simple-tools</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>file-tools</artifactId>
+    <packaging>jar</packaging>
+
+    <name>file-tools</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.graalvm.nativeimage</groupId>
+                <artifactId>native-image-maven-plugin</artifactId>
+                <version>21.0.0.2</version>
+                <executions>
+
+                    <execution>
+
+                        <goals>
+
+                            <goal>native-image</goal>
+
+                        </goals>
+
+                        <phase>package</phase>
+
+                    </execution>
+
+                </executions>
+
+                <configuration>
+
+                    <skip>false</skip>
+
+                    <imageName>file-tools</imageName>
+
+                    <mainClass>com.alianga.file.App</mainClass>
+
+                    <buildArgs>
+
+                        --no-fallback
+
+                        --initialize-at-build-time=org.slf4j.MDC
+
+                        --initialize-at-build-time=org.slf4j.LoggerFactory
+
+                        --initialize-at-build-time=org.slf4j.impl.StaticLoggerBinder
+
+                        --initialize-at-build-time=org.apache.log4j.helpers.Loader
+
+                        --initialize-at-build-time=org.apache.log4j.Logger
+
+                        --initialize-at-build-time=org.apache.log4j.helpers.LogLog
+
+                        --initialize-at-build-time=org.apache.log4j.LogManager
+
+                        --initialize-at-build-time=org.apache.log4j.spi.LoggingEvent
+
+                        --initialize-at-build-time=org.slf4j.impl.Log4jLoggerFactory
+
+                        --initialize-at-build-time=org.slf4j.impl.Log4jLoggerAdapter
+
+                        --initialize-at-build-time=top.wys.utils.DataUtils
+                        --initialize-at-build-time=top.wys.utils.IOUtils
+                        --initialize-at-build-time=top.wys.utils.StringUtils
+                        --initialize-at-build-time=top.wys.utils.convert.ConvertUtils
+
+
+                        --report-unsupported-elements-at-runtime
+
+                        --allow-incomplete-classpath
+                        --link-at-build-time
+
+                        --enable-url-protocols=http
+
+                        -H:+ReportExceptionStackTraces
+
+                    </buildArgs>
+
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
+</project>
