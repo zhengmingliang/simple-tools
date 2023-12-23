@@ -31,7 +31,7 @@ public class App {
         if(pointPosition != -1){
             outputFileName = name.substring(0,pointPosition) + "_new" + name.substring(pointPosition);
         } else {
-            outputFileName = name + "_new";
+            outputFileName = name + "_increased";
         }
         File outputFile = new File(file.getParentFile(), outputFileName);
         byte[] bytes = new byte[4096];
