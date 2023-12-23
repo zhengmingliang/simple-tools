@@ -31,3 +31,11 @@ D:\softwares\OpenArk-v1.3.2\OpenArk64.exe
 ```
 
 ![image-20231223114020528](assets/image-20231223114020528.png)
+
+### 方式三
+
+直接通过IDE运行
+
+1. 克隆源码
+2. 找到 `com.alianga.file.App`类，运行`main`即可
+
